@@ -1,11 +1,33 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import { Inter } from '@next/font/google';
+import styles from '../styles/Home.module.css';
+import { doc, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../clients/firebaseConfig";
+import { useState, useEffect } from 'react';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+  
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const docRef = doc(db, "accounts", "7pQNMtpspXpq9Bis752C");
+    const x = getDoc(docRef).then((doc) => {
+      if (doc.exists()) {
+        const data = doc.data();
+        setData(data);
+      } else {
+        // doc.data() will be undefined in this case
+        console.log("No such document!");
+      }
+    }).catch((error) => {
+      console.log("Error getting document:", error);
+    });
+  }, []
+  );
+
   return (
     <>
       <Head>
@@ -18,7 +40,7 @@ export default function Home() {
         <div className={styles.description}>
           <p>
             Get started by editing&nbsp;
-            <code className={styles.code}>pages/index.tsx</code>
+            <code className={styles.code}>{data?.name}</code>
           </p>
           <div>
             <a
