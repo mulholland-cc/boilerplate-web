@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css';
 import { doc, getDoc, getDocs } from "firebase/firestore";
 import { db } from "../clients/firebaseConfig";
 import { useState, useEffect } from 'react';
+import { motion } from "framer-motion"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -42,7 +43,11 @@ export default function Home() {
             Get started by editing&nbsp;
             <code className={styles.code}>{data?.name}</code>
           </p>
-          <div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+          >
             <a
               href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
               target="_blank"
@@ -58,7 +63,7 @@ export default function Home() {
                 priority
               />
             </a>
-          </div>
+          </motion.div>
         </div>
 
         <div className={styles.center}>
