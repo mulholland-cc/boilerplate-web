@@ -14,7 +14,7 @@ export default function Home() {
   const [data, setData] = useState<any>({});
 
   useEffect(() => {
-    const docRef = doc(db, "accounts", "7pQNMtpspXpq9Bis752C");
+    const docRef = doc(db, "accounts", "dM3wvJuO31TD6tOkdl84");
     const x = getDoc(docRef).then((doc) => {
       if (doc.exists()) {
         const data = doc.data();
@@ -40,7 +40,7 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.description}>
           <p>
-            Get started by editing&nbsp;
+            Welcome&nbsp;
             <code className={styles.code}>{data?.name}</code>
           </p>
           <motion.div
