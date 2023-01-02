@@ -1,3 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* LIGHT MODE */
 :root {
   --max-width: 1100px;
   --border-radius: 12px;
@@ -40,6 +45,7 @@
   --card-border-rgb: 131, 134, 135;
 }
 
+/* DARK MODE */
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -73,6 +79,8 @@
   }
 }
 
+/* STYLE RESET */
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -83,6 +91,8 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
+  scroll-behavior: smooth;
+  overscroll-behavior: none;
 }
 
 body {
